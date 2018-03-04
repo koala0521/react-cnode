@@ -12,11 +12,11 @@ export default class Item extends Component{
         console.log( data );
         return (
             <List 
-                // loading={ false } 
-                // dataSource={ data }
-                // renderItem = { (item)=>(<List.item>
+                loading={ false } 
+                dataSource={ data }
+                renderItem = { (item)=>(<List.Item>
 
-                // </List.item>)}
+                </List.Item>)}
             
             >
             </List>   
