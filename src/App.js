@@ -11,10 +11,12 @@ import "./view/index.css";
 
 class App extends Component {
 	render() {
+		console.log( this.props );
+		
 		return( <div className = "pageWrap" >
 			<Header></Header>
 			<div className="main" >
-				<Routers > </Routers> 
+				<Routers /> 
 			</div>
 			<Footer></Footer>
 		</div>)
