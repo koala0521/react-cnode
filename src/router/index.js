@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import {Route , Switch} from 'react-router-dom';
-import  Indexview from "../view/index";
-import  Bookview from "../view/book";
-import  Detailsview from "../view/details";
-import  Userview from "../view/user";
-import  Aboutview from "../view/about";
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Indexview from "../view/index";
+import Bookview from "../view/book";
+import Detailsview from "../view/details";
+import Userview from "../view/user";
+import Aboutview from "../view/about";
 
-export default class RouterIndx extends Component{
-    render() {
-      return (
-        <Switch>
-            <Route path="/" exact render={ ()=><Indexview /> }  ></Route>
-            <Route path="/book" exact render={ ()=><Bookview /> }  ></Route>
-            <Route path="/details" exact render={ ()=><Detailsview /> }  ></Route>
-            <Route path="/user" exact render={ ()=><Userview /> }  ></Route>
-            <Route path="/about" exact render={ ()=><Aboutview /> }  ></Route>
-        </Switch>
-      )
-    }
+export default class RouterIndx extends Component {
+	render() {
+		return (
+			<Switch>
+				<Route 
+					exact
+					path="/" 
+					render={() => <Redirect to="/index/all" /> }  
+				>
+				</Route>
+				<Route path="/index/:id" exact component={ Indexview } />
+				<Route path="/book" exact component={ Bookview } />
+				<Route path="/details" exact component={ Detailsview } />
+                <Route path="/user/:id" component={Userview}/>
+                <Route path="/details/:id" component={Aboutview}/>
+			</Switch>
+		)
+	}
 }
