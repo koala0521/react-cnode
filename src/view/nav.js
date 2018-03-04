@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink , Link } from 'react-router-dom';
-import { Layout ,Row , Col , Divider , Menu , Icon } from 'antd';
+import { Link } from 'react-router-dom';
+import { Menu , Icon } from 'antd';
 
 export default class Nav extends Component{
     
