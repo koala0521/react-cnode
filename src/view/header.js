@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink , Link } from 'react-router-dom';
 import { Layout ,Row , Col , Divider , Icon , Dropdown , Button } from 'antd';
 
 import Nav from './nav';
@@ -23,7 +22,7 @@ export default class User extends Component{
         return (
             <div>
                 <Layout.Header>
-                    <Row>                         
+                    <Row className="wrap">                         
                         <Col md={ 6 } xs={ 24 } >
                         
                             <h1 id="logo" >cNode</h1>
