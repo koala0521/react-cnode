@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
-export default class User extends Component{
+import data from './data';
 
+import PublicCard from '../publicCard';
+
+export default class User extends Component{
+    
     render() {
         return (
             <div>
-                图书页
+                <PublicCard data={ data } />
             </div>
         );
     }
