@@ -10,7 +10,7 @@ export default class Nav extends Component{
         <div>
             <Menu mode={ mode } id={ id } >
                 <Menu.Item>
-                <Link to="/" > <Icon type="home" />首页 </Link>
+                <Link to="/index/all" > <Icon type="home" />首页 </Link>
                 </Menu.Item>
                 <Menu.Item>
                     
