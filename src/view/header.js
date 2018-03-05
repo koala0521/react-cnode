@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Layout ,Row , Col , Divider , Icon , Dropdown , Button } from 'antd';
 
 import Nav from './nav';
-
 /**
  *  Layout 布局组件
  * 
