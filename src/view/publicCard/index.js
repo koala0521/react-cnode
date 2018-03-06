@@ -9,20 +9,22 @@ export default class PublicCard extends Component{
 
         let cards = data.map(( item )=>{
             return (
-                <Card        
-                    title={ item.title }
-                    loading={ false }
-                    type="inner"
-                    key={ Math.random() }
-                >   
-                    
-                    {/* dangerouslySetInnerHTML 类似原生的 innerHTML ,接收一个对象 ，key值为 __html  */} 
-                    <div
-                        dangerouslySetInnerHTML={ {__html : item.content} }
-                    >
-                    
-                    </div>
-                </Card>
+                <div className="wrap" >                
+                    <Card        
+                        title={ item.title }
+                        loading={ false }
+                        type="inner"
+                        key={ Math.random() }
+                    >   
+                        
+                        {/* dangerouslySetInnerHTML 类似原生的 innerHTML ,接收一个对象 ，key值为 __html  */} 
+                        <div
+                            dangerouslySetInnerHTML={ {__html : item.content} }
+                        >
+                        
+                        </div>
+                    </Card>
+                </div>
             )
         });
         

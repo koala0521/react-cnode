@@ -16,11 +16,12 @@ export default class RouterIndx extends Component {
 					render={() => <Redirect to="/index/all" /> }  
 				>
 				</Route>
-				<Route path="/index/:id" exact component={ Indexview } />
-				<Route path="/book" exact component={ Bookview } />
-				<Route path="/details" exact component={ Detailsview } />
+				<Route path="/index/:id" component={ Indexview } />
+				<Route path="/book"  component={ Bookview } />
+				<Route path="/details/:id" component={ Detailsview } />
                 <Route path="/user/:id" component={Userview}/>
-                <Route path="/details/:id" component={Aboutview}/>
+				<Route path="/about" component={Aboutview}/>
+				
 			</Switch>
 		)
 	}
