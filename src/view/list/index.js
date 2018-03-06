@@ -37,7 +37,7 @@ export default class Item extends Component{
                             <Link to={ "/user/" + item.author.loginname} >    
                                 { item.author.loginname + " " }
                             </Link>       
-                             发表于：{ item.create_at.split('T')[0] }     
+                            发表于：{ item.create_at.split('T')[0] }     
                         </p> }
                     />
 
