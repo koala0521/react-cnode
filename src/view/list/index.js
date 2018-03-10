@@ -1,21 +1,62 @@
 // import {  Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { List , Avatar } from 'antd';  //  List :antd 的列表组件  loading 布尔值  记录是否展示loading动画化组件 ; Avatar : 列表头像组件
 import { Link } from 'react-router-dom';
 
 // 列表假数据
 import listData from '../../data';
-
-// 
+// 标签组件
 import Tag from '../txtTag';
 
-export default class Item extends Component{
+import axios from 'axios';
+
+class Item extends Component{
+
+    constructor(...arg){
+        super(...arg);
+        this.state={
+            page:1 
+        };
+    }
+
+    getData = ()=>{         
+        let { tab } = this.props; 
+
+        this.props.dispatch(( dispatch )=>{
+
+            axios.get(`https://cnodejs.org/api/v1/topics?page=${ this.state.page }&tab=${ tab }&limit=15`)
+            
+            .then(( res )=>{
+                console.log( '##################1111' , res.data );
+                dispatch({
+                    type:"",
+                    data:res.data.data,
+                    loading:false
+                });
+                
+            })
+            .catch(( err )=>{
+                console.log( err );
+                
+            })
+
+        });    
+    }
+
+    componentDidMount(){
+
+        this.getData();
+    }
 
     render(){
-        let {data} = listData;
+        let { data  , loading  } = this.props;
+        
+        console.log(  '##################2222' , data , loading );  
+        
         return (
             <List 
-                loading={ false } 
+                loading={ loading } 
                 dataSource={ data }
                 renderItem = { (item)=>(
                     <List.Item
@@ -49,3 +90,5 @@ export default class Item extends Component{
         )
     }
 }
+
+export default connect( state=>state.indexReducer )( Item );

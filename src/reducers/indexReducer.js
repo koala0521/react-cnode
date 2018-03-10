@@ -3,13 +3,14 @@
 let initState = {
     data:[],
     loading:true
+    // ,searchId:'all'
 };
 
 function indexList( state=initState , action ){
-    
-    switch ( action ) {    
+    let {data , type ,loading } = action;
+    switch ( type ) {    
         default:
-            return state
+            return ({ ...state, data , loading })
             break;
     }
 

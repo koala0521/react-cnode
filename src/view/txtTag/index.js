@@ -41,9 +41,10 @@ export default class TxtTag extends Component{
 
     render(){
         let { data } = this.props;
+        let { color , txt } = tab[ getTab( data ) ] || {"color":"green",txt:"测试"};
         
         return (
-            <Tag color={ tab[ getTab( data ) ].color } > { tab[ getTab( data ) ].txt } </Tag>    
+            <Tag color={ color }> { txt} </Tag>    
         )
     }
 }
