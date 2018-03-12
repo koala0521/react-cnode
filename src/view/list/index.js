@@ -18,41 +18,59 @@ class Item extends Component{
         this.state={
             page:1 
         };
+        
     }
 
-    getData = ()=>{         
-        let { tab } = this.props; 
-
+    getData = ( tab )=>{         
+        // let { tab } = this.props;         
         this.props.dispatch(( dispatch )=>{
+
+            dispatch({
+                type:"LIST_UPDATEING"
+            });
 
             axios.get(`https://cnodejs.org/api/v1/topics?page=${ this.state.page }&tab=${ tab }&limit=15`)
             
             .then(( res )=>{
-                console.log( '##################1111' , res.data );
                 dispatch({
-                    type:"",
-                    data:res.data.data,
-                    loading:false
+                    type:"LIST_UPDATA_SUCESS",
+                    data:res.data.data
                 });
                 
             })
             .catch(( err )=>{
-                console.log( err );
+                dispatch({
+                    type:"LIST_UPDATA_ERR",
+                    data:err
+                });
                 
             })
 
         });    
     }
 
+    // 组件挂载完成之后调用
     componentDidMount(){
+        console.log("组件挂载完成");
+        this.getData( this.props.tab );
+    }
 
-        this.getData();
+    // 组件接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件props及state。
+    componentWillReceiveProps( nextProps ){
+ 
+        console.log("组件接收到新的props");        
+    }
+
+    // 当函数返回false时候，阻止接下来的render()函数的调用，阻止组件重渲染，而返回 true 时，组件照常重渲染。
+    shouldComponentUpdate( nextProps , nextState ){
+        let isUpdate = ( nextProps.tab !== this.props.tab );
+        isUpdate ? this.getData( nextProps.tab ) : null;                     
+        return true
     }
 
     render(){
         let { data  , loading  } = this.props;
-        
-        console.log(  '##################2222' , data , loading );  
+        console.log( "render" , this.props );
         
         return (
             <List 

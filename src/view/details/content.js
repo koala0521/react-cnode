@@ -5,9 +5,9 @@ import { Card , Avatar } from 'antd';
 import TxtTag from '../txtTag';
 
 export default class Content extends Component{
-
+    
     render() {
-        let { data } = this.props;
+        let { data , loading } = this.props;
         const title = (
             <div>
                 <h1> { data.title } </h1>
