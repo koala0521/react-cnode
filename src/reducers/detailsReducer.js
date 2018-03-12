@@ -18,7 +18,7 @@ let initState = {
 
 function details( state=initState , action ){
     let { type ,data } = action;
-    console.log(  type ,data  );
+    console.log(  type , data , state );
     
     switch ( action ) {  
         case "DETAIL_UPDATA":

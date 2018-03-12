@@ -25,7 +25,7 @@ class Details extends Component{
             .then(( res )=>{
                 dispatch({
                     type:"DETAIL_UPDATA_SUCESS",
-                    data:res.data.data
+                    data:res.data
                 });
                 
             })
@@ -47,7 +47,7 @@ class Details extends Component{
 
     render() {        
 
-        let { data , reply_count , replies , loading } = this.props;
+        let { data , loading } = this.props;
         
         console.log( this.props , "render" );
 
@@ -57,12 +57,12 @@ class Details extends Component{
 
                 <ReplayList 
                     loading={ loading } 
-                    replyCount={ reply_count} 
-                    replies={ replies } 
+                    replyCount={ data.reply_count} 
+                    replies={ data.replies } 
                 />
             </div>
         ); 
     }
 }
 
-export default connect( store=>store.detailsReducer )( Details );
+export default connect( state=>state.detailsReducer )( Details );
