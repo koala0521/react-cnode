@@ -6,7 +6,7 @@ import data from '../about/data';
 export default class ReplyList extends Component{
 
     render() {
-        let { loading,title,data } = this.props;
+        let { loading , title,data } = this.props;
       return (
         <Card
             loading={ loading }        

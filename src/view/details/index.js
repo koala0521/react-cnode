@@ -45,12 +45,13 @@ class Details extends Component{
     render() {        
 
         let { data , loading } = this.props;
+
         return (
             <div className="wrap" >
                 <Content data={ data } loading={ loading }  />
 
                 <ReplayList 
-                    loading
+                    loading={ loading }
                     replyCount={ data.reply_count} 
                     replies={ data.replies } 
                 />
