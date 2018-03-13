@@ -7,7 +7,6 @@ import ReplayList from './replayList';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { log } from 'core-js';
 
 
 class Details extends Component{
@@ -25,7 +24,7 @@ class Details extends Component{
             .then(( res )=>{
                 dispatch({
                     type:"DETAIL_UPDATA_SUCESS",
-                    data:res.data
+                    data:res.data.data
                 });
                 
             })
@@ -46,15 +45,12 @@ class Details extends Component{
     render() {        
 
         let { data , loading } = this.props;
-        
-        console.log( this.props );
-
         return (
             <div className="wrap" >
-                <Content data={ data } loading />
+                <Content data={ data } loading={ loading }  />
 
                 <ReplayList 
-                    loading={ loading } 
+                    loading
                     replyCount={ data.reply_count} 
                     replies={ data.replies } 
                 />

@@ -21,11 +21,14 @@ function details( state=initState , action ){
 
     switch ( type ) {  
         case "DETAIL_UPDATA":
-            return ({ ...state , loading:false })
+            return ({ ...state , loading:true })
+
         case "DETAIL_UPDATA_SUCESS":
             return ({ loading:false , data })
+
         case "DETAIL_UPDATA_ERR":
             return state
+            
         default:
             return state
     }

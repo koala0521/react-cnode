@@ -6,6 +6,7 @@ export default class Content extends Component{
 
     render(){
         let { loading , replyCount , replies } = this.props;
+        console.log( loading , replies ,"回复列表" );
         return (
             <Card
                 loading={ loading } 
