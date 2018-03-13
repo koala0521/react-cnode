@@ -41,15 +41,13 @@ class Details extends Component{
 
     componentDidMount(){
         this.getData(this.props.match.params.id);
-        
-        console.log( this.props , "componentDidMount" );
     }
 
     render() {        
 
-        let { data , reply_count , replies , loading } = this.props;
+        let { data , loading } = this.props;
         
-        console.log( this.props , "render" );
+        console.log( this.props );
 
         return (
             <div className="wrap" >
@@ -57,8 +55,8 @@ class Details extends Component{
 
                 <ReplayList 
                     loading={ loading } 
-                    replyCount={ reply_count} 
-                    replies={ replies } 
+                    replyCount={ data.reply_count} 
+                    replies={ data.replies } 
                 />
             </div>
         ); 

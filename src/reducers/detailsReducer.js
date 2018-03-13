@@ -18,11 +18,10 @@ let initState = {
 
 function details( state=initState , action ){
     let { type ,data } = action;
-    console.log(  type ,data  );
-    
-    switch ( action ) {  
+
+    switch ( type ) {  
         case "DETAIL_UPDATA":
-        return ({ ...state , loading:false })
+            return ({ ...state , loading:false })
         case "DETAIL_UPDATA_SUCESS":
             return ({ loading:false , data })
         case "DETAIL_UPDATA_ERR":
