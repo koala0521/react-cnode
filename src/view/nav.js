@@ -15,12 +15,22 @@ class Nav extends Component{
     }
 
     getActiveKey=( arg )=>{
-        let activeKey = arg.pathname.split("/")[1];
-        console.log( activeKey );
-        
+        let activeKey = arg.pathname.split("/")[1];  
         return activeKey
     }
     
+    shouldComponentUpdate( nextProps ){
+        let nextActiveKey = this.getActiveKey( nextProps.location ); 
+        
+        if( nextActiveKey != this.state.activeKey ){
+            this.setState({
+                activeKey:nextActiveKey
+            });
+            return false
+        }
+        return true;
+    }
+
     render() {
       let { mode , id } = this.props;
       return (
