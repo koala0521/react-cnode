@@ -42,6 +42,8 @@ class Details extends Component{
         this.getData(this.props.match.params.id);
     }
 
+    
+
     render() {        
 
         let { data , loading } = this.props;

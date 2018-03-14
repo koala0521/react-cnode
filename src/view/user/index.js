@@ -10,7 +10,9 @@ import { connect } from 'react-redux';
 class User extends Component{
 
     constructor(...arg){
-        super(...arg);
+        super(...arg);    
+        let id = this.props.match.params.id;
+        this.getData( id );
     }
 
     getData=(id)=>{
@@ -21,7 +23,7 @@ class User extends Component{
 
         axios.get(`https://cnodejs.org/api/v1/user/${id}`)        
             .then(( res )=>{
-                console.log( res );
+
                 dispatch({
                     type:"USER_UPDATE_SUCESS",
                     data:res.data.data
@@ -38,15 +40,24 @@ class User extends Component{
          
     }
 
-    componentDidMount(){
+    // componentDidMount(){
+    //     let id = this.props.match.params.id;
+    //     this.getData( id );
+    // }
+    shouldComponentUpdate(nextProps){
         let id = this.props.match.params.id;
-        this.getData( id );
+        let nextId = nextProps.match.params.id;
+        console.log( "shouldComponentUpdate" ,id , nextId );
+        if( id != nextId ){            
+            this.getData( nextProps.match.params.id );
+            return false
+        }
+        return true
     }
     
     render() {
         let { data , loading  } = this.props;
-        console.log( loading  , "render" );
-
+  
         return (
             <div className="wrap" >
                 <Avatar
