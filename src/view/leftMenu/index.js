@@ -2,7 +2,7 @@ import {  Link } from 'react-router-dom';
 import { Menu  } from 'antd';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-// 菜单配置数据
+
 import tab from '../tab';
 
 class LeftMenu extends Component{
