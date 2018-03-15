@@ -22,7 +22,7 @@ class LeftMenu extends Component{
     shouldComponentUpdate( nextProps ){
         let nextActiveKey = this.getActiveKey( nextProps.location ); 
         
-        if( nextActiveKey != this.state.activeKey ){
+        if( nextActiveKey !== this.state.activeKey ){
             this.setState({
                 activeKey:nextActiveKey
             });

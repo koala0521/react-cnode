@@ -48,7 +48,7 @@ class User extends Component{
         let id = this.props.match.params.id;
         let nextId = nextProps.match.params.id;
         console.log( "shouldComponentUpdate" ,id , nextId );
-        if( id != nextId ){            
+        if( id !== nextId ){            
             this.getData( nextProps.match.params.id );
             return false
         }

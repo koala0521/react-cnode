@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Avatar ,List ,Card } from 'antd';
 import { Link } from "react-router-dom";
-import data from '../about/data';
+// import data from '../about/data';
 
 export default class ReplyList extends Component{
 
     render() {
-        let { loading , title,data } = this.props;
+        let { loading , title, data } = this.props;
       return (
         <Card
             loading={ loading }        

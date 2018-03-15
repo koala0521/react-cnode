@@ -3,7 +3,6 @@
 let initState = {
     data:[],
     loading:true
-    // ,searchId:'all'
 };
 
 function indexList( state=initState , action ){

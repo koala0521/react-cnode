@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { Menu , Icon } from 'antd';
-import { log } from 'core-js';
 
 class Nav extends Component{
 
@@ -22,7 +21,7 @@ class Nav extends Component{
     shouldComponentUpdate( nextProps ){
         let nextActiveKey = this.getActiveKey( nextProps.location ); 
         
-        if( nextActiveKey != this.state.activeKey ){
+        if( nextActiveKey !== this.state.activeKey ){
             this.setState({
                 activeKey:nextActiveKey
             });

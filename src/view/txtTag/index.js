@@ -4,7 +4,6 @@ import tab from '../tab';
 
 function getTab( data ) {
     let type =  data.top ? "top": data.good ? "good" :  data.tab;
-    console.log( type );
    return tab.find( item=> item.tab === type );
 }
 
