@@ -51,15 +51,14 @@ class Item extends Component{
 
     // 组件挂载完成之后调用
     componentDidMount(){
-        console.log("组件挂载完成");
         this.getData( this.props.tab );
     }
 
     // 组件接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件props及state。
-    componentWillReceiveProps( nextProps ){
+    // componentWillReceiveProps( nextProps ){
  
-        console.log("组件接收到新的props");        
-    }
+    //     console.log("组件接收到新的props");        
+    // }
 
     // 当函数返回false时候，阻止接下来的render()函数的调用，阻止组件重渲染，而返回 true 时，组件照常重渲染。
     shouldComponentUpdate( nextProps , nextState ){
@@ -70,7 +69,6 @@ class Item extends Component{
 
     render(){
         let { data  , loading  } = this.props;
-        console.log( "render" , this.props );
         
         return (
             <List 
