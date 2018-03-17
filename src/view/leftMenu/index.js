@@ -10,7 +10,7 @@ class LeftMenu extends Component{
     constructor(...arg){
         super(...arg);
         this.state={
-            activeKey:"all"
+            activeKey:this.getActiveKey( this.props.location )
         }
     }
 
@@ -34,8 +34,7 @@ class LeftMenu extends Component{
     render() {
         let { mode , id } = this.props;
         return (
-            <Menu id={ id }  mode={ mode } selectedKeys={ [this.state.activeKey] } >
-               
+            <Menu id={ id }  mode={ mode } selectedKeys={ [this.state.activeKey] } >               
                 {
                     tab.map(item=>{
                         if( !item.isIndex ) return false;

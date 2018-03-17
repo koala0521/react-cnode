@@ -21,7 +21,7 @@ class Item extends Component{
         
     }
 
-    getData = ( tab )=>{         
+    getData = ( tab , page )=>{         
         // let { tab } = this.props;         
         this.props.dispatch(( dispatch )=>{
 
@@ -29,7 +29,7 @@ class Item extends Component{
                 type:"LIST_UPDATEING"
             });
 
-            axios.get(`https://cnodejs.org/api/v1/topics?page=${ this.state.page }&tab=${ tab }&limit=15`)
+            axios.get(`https://cnodejs.org/api/v1/topics?page=${ page }&tab=${ tab }&limit=15`)
             
             .then(( res )=>{
                 dispatch({
@@ -52,6 +52,7 @@ class Item extends Component{
     // 组件挂载完成之后调用
     componentDidMount(){
         this.getData( this.props.tab );
+        
     }
 
     // 组件接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件props及state。
@@ -62,8 +63,22 @@ class Item extends Component{
 
     // 当函数返回false时候，阻止接下来的render()函数的调用，阻止组件重渲染，而返回 true 时，组件照常重渲染。
     shouldComponentUpdate( nextProps , nextState ){
+        console.log( this.state , nextState );
+        let isUpdateState = this.state.page !==  nextState.page;
         let isUpdate = ( nextProps.tab !== this.props.tab );
-        isUpdate ? this.getData( nextProps.tab ) : null;                     
+        if( isUpdateState ){
+            this.getData( nextProps.tab , nextState.page );
+            console.log( "更新状态" );
+            return false
+        }
+
+        if(isUpdate) {
+            this.state.page = 1;
+            this.getData( nextProps.tab , 1 )
+            console.log( "更新分类" );
+            return false
+        }
+
         return true
     }
 
@@ -74,6 +89,18 @@ class Item extends Component{
             <List 
                 loading={ loading } 
                 dataSource={ data }
+                pagination={
+                    {
+                        current:this.state.page,
+                        pageSize:15,
+                        total:1000,
+                        onChange:(current)=>{
+                            this.setState({
+                                page:current
+                            });
+                        }
+                    }
+                }
                 renderItem = { (item)=>(
                     <List.Item
                         key={ Math.random() }
